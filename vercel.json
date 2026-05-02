@@ -1,0 +1,22 @@
+{
+  "buildCommand": "pnpm run build",
+  "installCommand": "pnpm install",
+  "framework": "vite",
+  "outputDirectory": "artifacts/portfolio/dist/public",
+  "env": {
+    "PORT": "3000",
+    "BASE_PATH": "/"
+  },
+  "regions": ["iad1"],
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
