@@ -36,11 +36,10 @@ function CodeBlock() {
       .replace(/(".*?")/g, '<span style="color:#a5d6ff">$1</span>')
       .replace(/('.*?')/g, '<span style="color:#a5d6ff">$1</span>')
       .replace(/\b(string|number|boolean|Developer)\b/g, '<span style="color:#ffa657">$1</span>')
-      .replace(/(motion\.\w+|motion)/g, '<span style="color:#79c0ff">$1</span>')
-      .replace(/([{}[\]])/g, '<span style="color:#e6edf3">$1</span>');
+      .replace(/(motion\.\w+|motion)/g, '<span style="color:#79c0ff">$1</span>');
     return (
       <div key={i} className="flex">
-        <span className="select-none mr-4 text-right w-7 shrink-0" style={{ color: "#3d444d" }}>{i + 1}</span>
+        <span className="select-none mr-4 text-right w-7 shrink-0 text-muted-foreground/40">{i + 1}</span>
         <span dangerouslySetInnerHTML={{ __html: colored || "&nbsp;" }} />
       </div>
     );
@@ -51,39 +50,31 @@ function CodeBlock() {
       initial={{ opacity: 0, x: 40 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-      className="relative rounded-xl overflow-hidden border"
-      style={{ backgroundColor: "#0d1117", borderColor: "#21262d" }}
+      className="relative rounded-xl overflow-hidden border border-border bg-card"
     >
-      <div className="flex items-center gap-2 px-4 py-3 border-b" style={{ borderColor: "#21262d", backgroundColor: "#161b22" }}>
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-background/50">
         <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "#ff5f56" }} />
         <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "#ffbd2e" }} />
         <div className="w-3 h-3 rounded-full" style={{ backgroundColor: "#27c93f" }} />
-        <span className="ml-3 text-xs" style={{ color: "#8b949e", fontFamily: "'Fira Code', monospace" }}>portfolio.tsx</span>
+        <span className="ml-3 text-xs text-muted-foreground" style={{ fontFamily: "'Fira Code', monospace" }}>portfolio.tsx</span>
       </div>
       <div
-        className="p-4 text-xs leading-6 overflow-auto max-h-80"
-        style={{ fontFamily: "'Fira Code', monospace", color: "#e6edf3", fontSize: "11px" }}
+        className="p-4 text-xs leading-6 overflow-auto max-h-80 text-foreground"
+        style={{ fontFamily: "'Fira Code', monospace", fontSize: "11px" }}
       >
         {displayed.split("\n").map((line, i) => renderLine(line, i))}
         <motion.span
           animate={{ opacity: [1, 0] }}
           transition={{ duration: 0.5, repeat: Infinity }}
-          style={{ color: "#58a6ff" }}
+          className="text-primary"
         >▋</motion.span>
       </div>
 
       {floatingBadges.map((badge, i) => (
         <motion.div
           key={badge.label}
-          className="absolute px-3 py-1.5 rounded-lg border text-xs font-medium whitespace-nowrap"
-          style={{
-            ...badge.style,
-            backgroundColor: "rgba(13,17,23,0.95)",
-            borderColor: "#21262d",
-            color: "#8b949e",
-            fontFamily: "'Fira Code', monospace",
-            backdropFilter: "blur(8px)",
-          }}
+          className="absolute px-3 py-1.5 rounded-lg border border-border bg-card/95 text-xs font-medium whitespace-nowrap text-muted-foreground"
+          style={{ ...badge.style, fontFamily: "'Fira Code', monospace", backdropFilter: "blur(8px)" }}
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 2.5 + i * 0.4, repeat: Infinity, ease: "easeInOut", delay: i * 0.6 }}
         >
@@ -102,7 +93,6 @@ function TypingText() {
   useEffect(() => {
     const target = typingTexts[currentIndex];
     let timeout: ReturnType<typeof setTimeout>;
-
     if (!deleting && displayed.length < target.length) {
       timeout = setTimeout(() => setDisplayed(target.slice(0, displayed.length + 1)), 65);
     } else if (!deleting && displayed.length === target.length) {
@@ -113,20 +103,16 @@ function TypingText() {
       setDeleting(false);
       setCurrentIndex((prev) => (prev + 1) % typingTexts.length);
     }
-
     return () => clearTimeout(timeout);
   }, [displayed, deleting, currentIndex]);
 
   return (
     <div className="flex items-center h-8 gap-1">
-      <span className="text-xl md:text-2xl font-semibold" style={{ color: "#58a6ff" }}>
-        {displayed}
-      </span>
+      <span className="text-xl md:text-2xl font-semibold text-primary">{displayed}</span>
       <motion.span
         animate={{ opacity: [1, 0] }}
         transition={{ duration: 0.5, repeat: Infinity }}
-        className="inline-block w-0.5 h-6 rounded"
-        style={{ backgroundColor: "#58a6ff" }}
+        className="inline-block w-0.5 h-6 rounded bg-primary"
       />
     </div>
   );
@@ -134,8 +120,7 @@ function TypingText() {
 
 export default function Hero() {
   const scrollToWork = () => {
-    const el = document.querySelector("#projects");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const container = {
@@ -148,16 +133,12 @@ export default function Hero() {
   };
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ paddingTop: "80px" }}
-    >
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-background" style={{ paddingTop: "80px" }}>
       <ParticleCanvas />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full py-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <motion.div variants={container} initial="hidden" animate="show" className="space-y-6">
-          <motion.p variants={item} className="text-base font-mono" style={{ color: "#8b949e", fontFamily: "'Fira Code', monospace" }}>
+          <motion.p variants={item} className="text-base font-mono text-muted-foreground" style={{ fontFamily: "'Fira Code', monospace" }}>
             Hi, I'm
           </motion.p>
 
@@ -175,29 +156,19 @@ export default function Hero() {
             Karthik Raju
           </motion.h1>
 
-          <motion.div variants={item}>
-            <TypingText />
-          </motion.div>
+          <motion.div variants={item}><TypingText /></motion.div>
 
-          <motion.p
-            variants={item}
-            className="text-base md:text-lg leading-relaxed max-w-lg"
-            style={{ color: "#8b949e" }}
-          >
+          <motion.p variants={item} className="text-base md:text-lg leading-relaxed max-w-lg text-muted-foreground">
             I build fast, beautiful, and intelligent web experiences that live at the intersection of design and engineering.
           </motion.p>
 
           <motion.div variants={item} className="flex flex-wrap gap-4">
             <motion.button
               onClick={scrollToWork}
-              whileHover={{ scale: 1.04, boxShadow: "0 0 24px rgba(88,166,255,0.4)" }}
+              whileHover={{ scale: 1.04, boxShadow: "0 0 24px rgba(88,166,255,0.35)" }}
               whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm cursor-pointer transition-all duration-200"
-              style={{
-                border: "1px solid #58a6ff",
-                color: "#58a6ff",
-                backgroundColor: "rgba(88,166,255,0.06)",
-              }}
+              className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm cursor-pointer border border-primary text-primary"
+              style={{ backgroundColor: "rgba(88,166,255,0.07)" }}
               data-testid="button-view-work"
             >
               View My Work
@@ -207,8 +178,8 @@ export default function Hero() {
               download
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm cursor-pointer transition-all duration-200"
-              style={{ border: "1px solid #21262d", color: "#e6edf3", backgroundColor: "rgba(255,255,255,0.03)" }}
+              className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm cursor-pointer border border-border text-foreground"
+              style={{ backgroundColor: "rgba(128,128,128,0.05)" }}
               data-testid="link-download-resume"
             >
               <Download size={15} />
@@ -220,12 +191,9 @@ export default function Hero() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <motion.a
-                  href={socialLinks.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.15, color: "#58a6ff" }}
-                  className="p-2.5 rounded-lg border transition-all duration-200 cursor-pointer"
-                  style={{ borderColor: "#21262d", color: "#8b949e" }}
+                  href={socialLinks.github} target="_blank" rel="noopener noreferrer"
+                  whileHover={{ scale: 1.15 }}
+                  className="p-2.5 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors cursor-pointer"
                   data-testid="link-github"
                 >
                   <SiGithub size={18} />
@@ -237,12 +205,9 @@ export default function Hero() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <motion.a
-                  href={socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.15, color: "#58a6ff" }}
-                  className="p-2.5 rounded-lg border transition-all duration-200 cursor-pointer"
-                  style={{ borderColor: "#21262d", color: "#8b949e" }}
+                  href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer"
+                  whileHover={{ scale: 1.15 }}
+                  className="p-2.5 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors cursor-pointer"
                   data-testid="link-linkedin"
                 >
                   <FaLinkedin size={18} />
@@ -255,9 +220,8 @@ export default function Hero() {
               <TooltipTrigger asChild>
                 <motion.a
                   href={`mailto:${socialLinks.email}`}
-                  whileHover={{ scale: 1.15, color: "#58a6ff" }}
-                  className="p-2.5 rounded-lg border transition-all duration-200 cursor-pointer"
-                  style={{ borderColor: "#21262d", color: "#8b949e" }}
+                  whileHover={{ scale: 1.15 }}
+                  className="p-2.5 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors cursor-pointer"
                   data-testid="link-email"
                 >
                   <Mail size={18} />
@@ -273,7 +237,7 @@ export default function Hero() {
                 animate={{ scale: [1, 1.4, 1], opacity: [0.7, 1, 0.7] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
-              <span className="text-xs" style={{ color: "#8b949e" }}>Open to opportunities</span>
+              <span className="text-xs text-muted-foreground">Open to opportunities</span>
             </div>
           </motion.div>
         </motion.div>
@@ -295,7 +259,7 @@ export default function Hero() {
         onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })}
         data-testid="button-scroll-down"
       >
-        <ChevronDown size={28} style={{ color: "#58a6ff", opacity: 0.7 }} />
+        <ChevronDown size={28} className="text-primary opacity-70" />
       </motion.div>
     </section>
   );

@@ -3,27 +3,19 @@ import { ArrowUp } from "lucide-react";
 import { navLinks } from "@/lib/data";
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <footer
-      className="relative py-10 px-6"
-      style={{ borderTop: "1px solid #21262d", backgroundColor: "#0a0a0f" }}
-    >
+    <footer className="relative py-10 px-6 border-t border-border bg-background">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="text-center md:text-left">
-          <p className="text-sm" style={{ color: "#8b949e" }}>
+          <p className="text-sm text-muted-foreground">
             Designed & Built by{" "}
-            <span style={{ color: "#58a6ff" }} className="font-semibold">
-              Karthik Raju
-            </span>{" "}
+            <span className="font-semibold text-primary">Karthik Raju</span>{" "}
             · 2025
           </p>
         </div>
@@ -33,8 +25,7 @@ export default function Footer() {
             <button
               key={href}
               onClick={() => scrollTo(href)}
-              className="text-xs transition-colors duration-200 cursor-pointer hover:opacity-100 opacity-60"
-              style={{ color: "#e6edf3" }}
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200 cursor-pointer"
             >
               {label}
             </button>
@@ -45,8 +36,7 @@ export default function Footer() {
           onClick={scrollToTop}
           whileHover={{ scale: 1.1, y: -2 }}
           whileTap={{ scale: 0.95 }}
-          className="p-3 rounded-full border cursor-pointer"
-          style={{ borderColor: "#21262d", color: "#58a6ff" }}
+          className="p-3 rounded-full border border-border text-primary cursor-pointer hover:border-primary/50 transition-colors"
           data-testid="button-back-to-top"
         >
           <ArrowUp size={18} />

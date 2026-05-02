@@ -9,6 +9,10 @@ interface Particle {
   opacity: number;
 }
 
+function isDarkMode() {
+  return document.documentElement.classList.contains("dark");
+}
+
 export default function ParticleCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -39,6 +43,10 @@ export default function ParticleCanvas() {
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
+      const dark = isDarkMode();
+      const dotColor = dark ? "88,166,255" : "58,100,200";
+      const dotOpacityScale = dark ? 1 : 0.55;
+      const lineOpacityScale = dark ? 1 : 0.6;
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
@@ -49,7 +57,7 @@ export default function ParticleCanvas() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(88,166,255,${p.opacity})`;
+        ctx.fillStyle = `rgba(${dotColor},${p.opacity * dotOpacityScale})`;
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -61,7 +69,7 @@ export default function ParticleCanvas() {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(88,166,255,${0.12 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(${dotColor},${0.12 * (1 - dist / 120) * lineOpacityScale})`;
             ctx.lineWidth = 0.6;
             ctx.stroke();
           }

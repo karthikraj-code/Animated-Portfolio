@@ -43,9 +43,9 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 relative overflow-hidden" style={{ backgroundColor: "#0a0a0f" }}>
-      <div className="absolute -top-32 -left-32 w-64 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(88,166,255,0.12) 0%, transparent 70%)", filter: "blur(40px)" }} />
-      <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(167,139,250,0.12) 0%, transparent 70%)", filter: "blur(50px)" }} />
+    <section id="contact" className="py-28 relative overflow-hidden bg-card/30">
+      <div className="absolute -top-32 -left-32 w-64 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(88,166,255,0.1) 0%, transparent 70%)", filter: "blur(40px)" }} />
+      <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(167,139,250,0.1) 0%, transparent 70%)", filter: "blur(50px)" }} />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
@@ -55,13 +55,13 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-sm font-mono mb-3" style={{ color: "#58a6ff", fontFamily: "'Fira Code', monospace" }}>
+          <p className="text-sm font-mono mb-3 text-primary" style={{ fontFamily: "'Fira Code', monospace" }}>
             reach_out()
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#e6edf3" }}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
             Let's Build Something Together
           </h2>
-          <p className="max-w-xl mx-auto" style={{ color: "#8b949e" }}>
+          <p className="max-w-xl mx-auto text-muted-foreground">
             I'm currently open to full-time roles, internships, freelance projects, and exciting collaborations.
           </p>
         </motion.div>
@@ -80,13 +80,9 @@ export default function Contact() {
                 <motion.div
                   key={i}
                   whileHover={{ x: 4 }}
-                  className="flex items-center gap-4 p-4 rounded-2xl border"
-                  style={{ backgroundColor: "#0d1117", borderColor: "#21262d" }}
+                  className="flex items-center gap-4 p-4 rounded-2xl border border-border bg-card"
                 >
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: "rgba(88,166,255,0.1)" }}
-                  >
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(88,166,255,0.1)" }}>
                     {item.isStatus ? (
                       <motion.div
                         className="w-3 h-3 rounded-full"
@@ -95,15 +91,17 @@ export default function Contact() {
                         transition={{ duration: 1.5, repeat: Infinity }}
                       />
                     ) : (
-                      <Icon size={16} style={{ color: "#58a6ff" }} />
+                      <Icon size={16} className="text-primary" />
                     )}
                   </div>
                   {item.href ? (
-                    <a href={item.href} className="text-sm hover:opacity-80 transition-opacity" style={{ color: item.isStatus ? "#22c55e" : "#e6edf3" }}>
-                      {item.label}
+                    <a href={item.href} className="text-sm hover:opacity-80 transition-opacity" style={{ color: item.isStatus ? "#22c55e" : undefined }} >
+                      <span className={item.isStatus ? "" : "text-foreground"}>{item.label}</span>
                     </a>
                   ) : (
-                    <span className="text-sm" style={{ color: item.isStatus ? "#22c55e" : "#e6edf3" }}>{item.label}</span>
+                    <span className="text-sm" style={{ color: item.isStatus ? "#22c55e" : undefined }}>
+                      <span className={item.isStatus ? "" : "text-foreground"}>{item.label}</span>
+                    </span>
                   )}
                 </motion.div>
               );
@@ -114,9 +112,8 @@ export default function Contact() {
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.12, y: -3 }}
-                className="flex items-center gap-2 px-5 py-3 rounded-xl border font-medium text-sm cursor-pointer"
-                style={{ borderColor: "#21262d", color: "#e6edf3", backgroundColor: "#0d1117" }}
+                whileHover={{ scale: 1.08, y: -3 }}
+                className="flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-card text-foreground font-medium text-sm cursor-pointer hover:border-primary/50 transition-colors"
                 data-testid="link-contact-github"
               >
                 <SiGithub size={18} />
@@ -126,9 +123,8 @@ export default function Contact() {
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.12, y: -3 }}
-                className="flex items-center gap-2 px-5 py-3 rounded-xl border font-medium text-sm cursor-pointer"
-                style={{ borderColor: "#21262d", color: "#e6edf3", backgroundColor: "#0d1117" }}
+                whileHover={{ scale: 1.08, y: -3 }}
+                className="flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-card text-foreground font-medium text-sm cursor-pointer hover:border-primary/50 transition-colors"
                 data-testid="link-contact-linkedin"
               >
                 <FaLinkedin size={18} />
@@ -143,7 +139,7 @@ export default function Contact() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="p-8 rounded-2xl border" style={{ backgroundColor: "#0d1117", borderColor: "#21262d" }}>
+            <div className="p-8 rounded-2xl border border-border bg-card">
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -157,8 +153,8 @@ export default function Contact() {
                   >
                     <CheckCircle size={48} style={{ color: "#22c55e" }} />
                   </motion.div>
-                  <p className="text-xl font-bold" style={{ color: "#e6edf3" }}>Message Sent!</p>
-                  <p className="text-sm text-center" style={{ color: "#8b949e" }}>Thanks for reaching out. I'll get back to you soon.</p>
+                  <p className="text-xl font-bold text-foreground">Message Sent!</p>
+                  <p className="text-sm text-center text-muted-foreground">Thanks for reaching out. I'll get back to you soon.</p>
                 </motion.div>
               ) : (
                 <Form {...form}>
@@ -169,13 +165,12 @@ export default function Contact() {
                         name="name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel style={{ color: "#8b949e" }}>Name</FormLabel>
+                            <FormLabel className="text-muted-foreground">Name</FormLabel>
                             <FormControl>
                               <Input
                                 placeholder="Your name"
                                 {...field}
-                                className="border rounded-xl"
-                                style={{ backgroundColor: "rgba(255,255,255,0.03)", borderColor: "#21262d", color: "#e6edf3" }}
+                                className="rounded-xl bg-background border-border text-foreground"
                                 data-testid="input-name"
                               />
                             </FormControl>
@@ -188,14 +183,13 @@ export default function Contact() {
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel style={{ color: "#8b949e" }}>Email</FormLabel>
+                            <FormLabel className="text-muted-foreground">Email</FormLabel>
                             <FormControl>
                               <Input
                                 placeholder="your@email.com"
                                 type="email"
                                 {...field}
-                                className="border rounded-xl"
-                                style={{ backgroundColor: "rgba(255,255,255,0.03)", borderColor: "#21262d", color: "#e6edf3" }}
+                                className="rounded-xl bg-background border-border text-foreground"
                                 data-testid="input-email"
                               />
                             </FormControl>
@@ -210,13 +204,12 @@ export default function Contact() {
                       name="subject"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel style={{ color: "#8b949e" }}>Subject</FormLabel>
+                          <FormLabel className="text-muted-foreground">Subject</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="What's this about?"
                               {...field}
-                              className="border rounded-xl"
-                              style={{ backgroundColor: "rgba(255,255,255,0.03)", borderColor: "#21262d", color: "#e6edf3" }}
+                              className="rounded-xl bg-background border-border text-foreground"
                               data-testid="input-subject"
                             />
                           </FormControl>
@@ -230,14 +223,13 @@ export default function Contact() {
                       name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel style={{ color: "#8b949e" }}>Message</FormLabel>
+                          <FormLabel className="text-muted-foreground">Message</FormLabel>
                           <FormControl>
                             <Textarea
                               placeholder="Tell me about your project or opportunity..."
                               rows={5}
                               {...field}
-                              className="border rounded-xl resize-none"
-                              style={{ backgroundColor: "rgba(255,255,255,0.03)", borderColor: "#21262d", color: "#e6edf3" }}
+                              className="rounded-xl resize-none bg-background border-border text-foreground"
                               data-testid="textarea-message"
                             />
                           </FormControl>
@@ -251,8 +243,7 @@ export default function Contact() {
                       disabled={form.formState.isSubmitting}
                       whileHover={!form.formState.isSubmitting ? { scale: 1.02, boxShadow: "0 0 24px rgba(88,166,255,0.3)" } : {}}
                       whileTap={!form.formState.isSubmitting ? { scale: 0.98 } : {}}
-                      className="w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 disabled:opacity-70"
-                      style={{ backgroundColor: "#58a6ff", color: "#000" }}
+                      className="w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 disabled:opacity-70 bg-primary text-primary-foreground"
                       data-testid="button-send-message"
                     >
                       {form.formState.isSubmitting ? (

@@ -13,11 +13,8 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="py-28 relative" style={{ backgroundColor: "#0a0a12" }}>
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse 60% 40% at 80% 80%, rgba(167,139,250,0.05) 0%, transparent 70%)" }}
-      />
+    <section id="projects" className="py-28 relative bg-card/30">
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 40% at 80% 80%, rgba(167,139,250,0.05) 0%, transparent 70%)" }} />
 
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
@@ -27,10 +24,10 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-sm font-mono mb-3" style={{ color: "#58a6ff", fontFamily: "'Fira Code', monospace" }}>
+          <p className="text-sm font-mono mb-3 text-primary" style={{ fontFamily: "'Fira Code', monospace" }}>
             // Selected Work
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold" style={{ color: "#e6edf3" }}>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
             Things I've Built
           </h2>
         </motion.div>
@@ -43,8 +40,8 @@ export default function Projects() {
                 onClick={() => setActiveFilter(tab)}
                 className="px-5 py-2 rounded-full text-sm font-medium border transition-all duration-200 cursor-pointer"
                 style={{
-                  borderColor: activeFilter === tab ? "#58a6ff" : "#21262d",
-                  color: activeFilter === tab ? "#58a6ff" : "#8b949e",
+                  borderColor: activeFilter === tab ? "#58a6ff" : "hsl(var(--border))",
+                  color: activeFilter === tab ? "#58a6ff" : "hsl(var(--muted-foreground))",
                   backgroundColor: activeFilter === tab ? "rgba(88,166,255,0.08)" : "transparent",
                 }}
                 data-testid={`button-filter-${tab.toLowerCase()}`}
@@ -70,29 +67,15 @@ export default function Projects() {
                   scale: 1.02,
                   boxShadow: "0 20px 40px rgba(88,166,255,0.12), 0 0 0 1px rgba(88,166,255,0.2)",
                 }}
-                className={`rounded-2xl border overflow-hidden flex flex-col transition-all duration-300 ${project.featured ? "md:col-span-2 lg:col-span-1" : ""}`}
-                style={{ backgroundColor: "#0d1117", borderColor: "#21262d" }}
+                className={`rounded-2xl border border-border bg-card overflow-hidden flex flex-col transition-all duration-300 ${project.featured ? "md:col-span-2 lg:col-span-1" : ""}`}
               >
-                <div
-                  className={`w-full ${project.featured ? "h-36" : "h-28"} bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}
-                >
-                  <div
-                    className="absolute inset-0 opacity-30"
-                    style={{
-                      background: `linear-gradient(135deg, rgba(88,166,255,0.15) 0%, transparent 50%, rgba(167,139,250,0.15) 100%)`,
-                    }}
-                  />
+                <div className={`w-full ${project.featured ? "h-36" : "h-28"} bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
+                  <div className="absolute inset-0 opacity-30" style={{ background: "linear-gradient(135deg, rgba(88,166,255,0.15) 0%, transparent 50%, rgba(167,139,250,0.15) 100%)" }} />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div
-                      className="w-16 h-16 rounded-full opacity-20"
-                      style={{ background: `linear-gradient(135deg, #58a6ff, #a78bfa)`, filter: "blur(20px)" }}
-                    />
+                    <div className="w-16 h-16 rounded-full opacity-20" style={{ background: "linear-gradient(135deg, #58a6ff, #a78bfa)", filter: "blur(20px)" }} />
                   </div>
                   {project.featured && (
-                    <span
-                      className="absolute top-3 right-3 text-xs px-2 py-0.5 rounded-full font-semibold"
-                      style={{ backgroundColor: "rgba(88,166,255,0.2)", color: "#58a6ff", border: "1px solid rgba(88,166,255,0.3)" }}
-                    >
+                    <span className="absolute top-3 right-3 text-xs px-2 py-0.5 rounded-full font-semibold" style={{ backgroundColor: "rgba(88,166,255,0.2)", color: "#58a6ff", border: "1px solid rgba(88,166,255,0.3)" }}>
                       Featured
                     </span>
                   )}
@@ -101,26 +84,18 @@ export default function Projects() {
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex flex-wrap gap-1.5 mb-3">
                     {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-2 py-0.5 rounded-full"
-                        style={{ backgroundColor: "rgba(167,139,250,0.1)", color: "#a78bfa", border: "1px solid rgba(167,139,250,0.2)" }}
-                      >
+                      <span key={tag} className="text-xs px-2 py-0.5 rounded-full text-accent" style={{ backgroundColor: "rgba(167,139,250,0.1)", border: "1px solid rgba(167,139,250,0.2)" }}>
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <h3 className="text-lg font-bold mb-2" style={{ color: "#e6edf3" }}>{project.title}</h3>
-                  <p className="text-sm leading-relaxed flex-1 mb-4" style={{ color: "#8b949e" }}>{project.description}</p>
+                  <h3 className="text-lg font-bold mb-2 text-foreground">{project.title}</h3>
+                  <p className="text-sm leading-relaxed flex-1 mb-4 text-muted-foreground">{project.description}</p>
 
                   <div className="flex flex-wrap gap-1.5 mb-5">
                     {project.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-xs px-2 py-0.5 rounded"
-                        style={{ backgroundColor: "rgba(33,38,45,0.8)", color: "#8b949e", fontFamily: "'Fira Code', monospace" }}
-                      >
+                      <span key={tech} className="text-xs px-2 py-0.5 rounded border border-border bg-background text-muted-foreground" style={{ fontFamily: "'Fira Code', monospace" }}>
                         {tech}
                       </span>
                     ))}
@@ -131,8 +106,8 @@ export default function Projects() {
                       href={project.demo}
                       whileHover={{ scale: 1.04 }}
                       whileTap={{ scale: 0.97 }}
-                      className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium cursor-pointer flex-1 justify-center"
-                      style={{ backgroundColor: "rgba(88,166,255,0.1)", color: "#58a6ff", border: "1px solid rgba(88,166,255,0.2)" }}
+                      className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium cursor-pointer flex-1 justify-center text-primary"
+                      style={{ backgroundColor: "rgba(88,166,255,0.1)", border: "1px solid rgba(88,166,255,0.2)" }}
                       data-testid={`link-demo-${i}`}
                     >
                       <ExternalLink size={13} />
@@ -144,8 +119,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
-                      className="p-2.5 rounded-lg border cursor-pointer"
-                      style={{ borderColor: "#21262d", color: "#8b949e" }}
+                      className="p-2.5 rounded-lg border border-border text-muted-foreground hover:text-foreground cursor-pointer transition-colors"
                       data-testid={`link-github-${i}`}
                     >
                       <Github size={15} />
@@ -170,8 +144,7 @@ export default function Projects() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.04, boxShadow: "0 0 20px rgba(88,166,255,0.2)" }}
             whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-xl font-semibold border cursor-pointer"
-            style={{ borderColor: "#21262d", color: "#e6edf3", backgroundColor: "rgba(255,255,255,0.02)" }}
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-xl font-semibold border border-border text-foreground cursor-pointer hover:border-primary/50 transition-colors"
             data-testid="link-more-github"
           >
             <Github size={16} />
