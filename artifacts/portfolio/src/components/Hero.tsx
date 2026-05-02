@@ -59,8 +59,8 @@ function CodeBlock() {
         <span className="ml-3 text-xs text-muted-foreground" style={{ fontFamily: "'Fira Code', monospace" }}>portfolio.tsx</span>
       </div>
       <div
-        className="p-3 text-xs leading-6 overflow-auto max-h-64 md:max-h-80 text-foreground"
-        style={{ fontFamily: "'Fira Code', monospace", fontSize: "11px" }}
+        className="p-3 text-xs leading-5 overflow-auto max-h-52 sm:max-h-64 md:max-h-80 text-foreground"
+        style={{ fontFamily: "'Fira Code', monospace", fontSize: "10px" }}
       >
         {displayed.split("\n").map((line, i) => renderLine(line, i))}
         <motion.span
@@ -243,12 +243,12 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Code block: shown on tablet+ only, too large for small phones */}
+        {/* Code block: visible on all devices */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="hidden sm:block relative lg:mt-0 mt-4"
+          className="relative lg:mt-0 mt-2 w-full"
         >
           <CodeBlock />
         </motion.div>
