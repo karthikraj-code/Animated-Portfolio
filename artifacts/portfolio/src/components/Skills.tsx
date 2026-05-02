@@ -38,7 +38,7 @@ function ProgressBar({ level }: { level: number }) {
         style={{ background: "linear-gradient(90deg, #58a6ff, #a78bfa)" }}
         initial={{ width: 0 }}
         animate={inView ? { width: `${level}%` } : { width: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+        transition={{ duration: 1.2, delay: 0.2 }}
       />
     </div>
   );

@@ -45,7 +45,7 @@ export default function Experience() {
                     initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-60px" }}
-                    transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
+                    transition={{ duration: 0.5, delay: i * 0.08 }}
                     className="p-4 rounded-2xl border border-border bg-card"
                   >
                     <div className="flex items-center gap-2 mb-2">
@@ -96,7 +96,7 @@ export default function Experience() {
                     initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: 0.6, delay: i * 0.08, ease: "easeOut" }}
+                    transition={{ duration: 0.6, delay: i * 0.08 }}
                   >
                     <div className="p-5 rounded-2xl border border-border bg-card">
                       <div className={`flex items-center gap-2 mb-3 ${isLeft ? "justify-end" : "justify-start"}`}>

@@ -48,7 +48,7 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.6 }}
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
           backdropFilter: scrolled ? "blur(20px)" : "none",
@@ -164,7 +164,7 @@ export default function Navbar() {
                   onClick={() => scrollTo(href)}
                   className="text-3xl font-bold text-foreground cursor-pointer"
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                  whileHover={{ color: "hsl(var(--primary))", x: 8 } as Record<string, unknown>}
+                  whileHover={{ color: "hsl(var(--primary))", x: 8 }}
                 >
                   {label}
                 </motion.button>

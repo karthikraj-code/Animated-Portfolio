@@ -12,7 +12,7 @@ export default function LoadingScreen({ isVisible }: LoadingScreenProps) {
           key="loading"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.5 }}
           className="fixed inset-0 z-[9998] flex items-center justify-center"
           style={{ backgroundColor: "#0a0a0f" }}
         >
@@ -20,7 +20,7 @@ export default function LoadingScreen({ isVisible }: LoadingScreenProps) {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4 }}
             className="text-center"
           >
             <motion.span
@@ -37,7 +37,7 @@ export default function LoadingScreen({ isVisible }: LoadingScreenProps) {
                   "0 0 20px rgba(88,166,255,0.4)",
                 ],
               }}
-              transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 1.2, repeat: Infinity }}
             >
               KR.
             </motion.span>
@@ -53,7 +53,7 @@ export default function LoadingScreen({ isVisible }: LoadingScreenProps) {
                   className="w-1.5 h-1.5 rounded-full"
                   style={{ backgroundColor: "#58a6ff" }}
                   animate={{ opacity: [0.2, 1, 0.2], scale: [0.8, 1.2, 0.8] }}
-                  transition={{ duration: 0.8, repeat: Infinity, delay: i * 0.2, ease: "easeInOut" }}
+                  transition={{ duration: 0.8, repeat: Infinity, delay: i * 0.2 }}
                 />
               ))}
             </motion.div>
