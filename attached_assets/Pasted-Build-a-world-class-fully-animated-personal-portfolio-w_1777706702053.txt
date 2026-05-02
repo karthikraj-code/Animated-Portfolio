@@ -1,0 +1,319 @@
+Build a world-class, fully animated personal portfolio website for Arajyula Karthik Raju — 
+a Final Year B.Tech CSE (AIML) student at Kalasalingam Academy of Research and Education 
+(CGPA 9.18/10), Full Stack Developer, GDG KARE Lead Organizer, and UI animation enthusiast.
+
+==========================================================================
+TECH STACK TO USE
+==========================================================================
+- Next.js 14 (App Router)
+- Tailwind CSS
+- Framer Motion (ALL animations)
+- shadcn/ui components
+- Anime.js (for canvas/SVG particle effects)
+- Lucide React (icons)
+- next-themes (dark/light toggle)
+
+==========================================================================
+DESIGN SYSTEM
+==========================================================================
+Theme: Ultra-dark premium (default dark mode)
+Primary color: Electric blue (#58a6ff) 
+Accent: Violet (#a78bfa)
+Background: #0a0a0f (near-black)
+Surface cards: #0d1117 with 1px border #21262d
+Text: #e6edf3 primary, #8b949e muted
+Font: Inter (body), Fira Code (mono/code elements)
+
+Aesthetic: Apple-level polish × GitHub dark × Linear.app × Vercel dashboard
+- Glassmorphism cards with backdrop-blur-md
+- Subtle grain texture overlay on hero (CSS noise filter)
+- Floating gradient orbs in background (blue + violet, very subtle, blurred)
+- Smooth scroll with Lenis smooth scroll library
+- All sections fade+slide in on scroll using Framer Motion viewport triggers
+- Cursor: custom animated cursor (ring that follows mouse, shrinks on hover)
+
+==========================================================================
+SECTIONS — BUILD ALL OF THESE IN ORDER
+==========================================================================
+
+── 1. NAVBAR ──────────────────────────────────────────────────────────────
+- Sticky, blurred glass background on scroll (backdrop-blur + bg-opacity)
+- Logo: "KR" in monospace with a blinking cursor animation
+- Nav links: Home, About, Skills, Experience, Projects, Contact
+- Active link indicator: sliding underline pill
+- Dark/Light mode toggle with smooth icon morph animation
+- Mobile: hamburger → full-screen overlay menu with staggered link animations
+- CTA button: "Hire Me" with shimmer hover effect
+
+── 2. HERO ────────────────────────────────────────────────────────────────
+- Full viewport height
+- Left side:
+  - Greeting: "Hi, I'm" (small, muted)
+  - Name: "Karthik Raju" — massive, bold, with a gradient text effect 
+    (blue → violet) and a subtle glitch animation on load
+  - Animated typing text (Framer Motion, not a library): cycles through
+    → "Full Stack Developer"
+    → "UI Animation Enthusiast"  
+    → "GDG KARE Lead Organizer"
+    → "AI-Powered App Builder"
+    → "Final Year AIML Student"
+  - Short bio: "I build fast, beautiful, and intelligent web experiences 
+    that live at the intersection of design and engineering."
+  - Two CTA buttons:
+    → "View My Work" (primary, glowing blue border)
+    → "Download Resume" (ghost, with download icon)
+  - Social links row: GitHub, LinkedIn, Email — icon buttons with tooltip
+  - Status badge: pulsing green dot + "Open to opportunities"
+
+- Right side:
+  - Animated code block (looks like a real VSCode snippet) showing a 
+    fake React component with syntax highlighting, with a typing animation
+    that types the code out character by character on load
+  - Floating badge cards orbiting/floating around it:
+    → "React.js ⚛"
+    → "Next.js ▲"  
+    → "Node.js ⬡"
+    → "Framer Motion ✦"
+    (each badge floats up and down with different animation delays)
+
+- Background: animated particle canvas (Anime.js) — sparse floating dots 
+  connected by lines, very subtle, dark blue tones
+- Scroll indicator: animated bouncing chevron at bottom center
+
+── 3. ABOUT ──────────────────────────────────────────────────────────────
+- Split layout: left = image/avatar area, right = text
+- Left: 
+  - Animated avatar placeholder (gradient circle with "KR" initials,
+    rotating gradient border using conic-gradient animation)
+  - Below it: three animated stat cards:
+    → "9.18 CGPA" 
+    → "1300+ Community"
+    → "3 Major Projects"
+  - Each stat has a count-up animation when scrolled into view
+
+- Right:
+  - Section tag: "< About Me />" in code style
+  - Heading: "Passionate about building things that matter"
+  - Two paragraphs:
+    → "I'm a final year B.Tech CSE (AIML) student at KARE with a CGPA 
+       of 9.18. I specialize in building full-stack web applications 
+       with modern tools — from pixel-perfect animated frontends to 
+       scalable backend architectures."
+    → "Beyond code, I lead the GDG KARE chapter as Lead Organizer — 
+       selected by Google through a competitive process — where I 
+       oversee 13 core team members and coordinate a community of 
+       1,300+ active developers."
+  - Info grid (2×2):
+    → 🎓 Kalasalingam Academy of Research and Education
+    → 📍 Andhra Pradesh, India
+    → 📧 aradhulakarthik@gmail.com
+    → 📱 +91 6302559912
+  - "What I bring" tags: Problem Solver · Team Leader · Fast Learner · 
+    Detail Oriented · Open Source Contributor
+
+── 4. SKILLS ─────────────────────────────────────────────────────────────
+- Section heading with animated bracket: "{ Skills }"
+- Layout: tabbed interface (Languages / Frontend / Backend & DB / Cloud & Tools)
+- Tab switching with Framer Motion layout animation (sliding indicator)
+
+Each skill shown as a card with:
+  - Icon (use devicon SVGs or emoji fallback)
+  - Name
+  - Animated progress bar that fills on scroll-into-view
+  - Proficiency label (Proficient / Familiar / Learning)
+
+Skills data:
+  LANGUAGES: JavaScript (Proficient), Python (Proficient)
+  
+  FRONTEND: React.js (Proficient), Next.js (Proficient), 
+  Tailwind CSS (Proficient), HTML/CSS (Proficient),
+  Framer Motion (Proficient), Anime.js (Proficient), shadcn/ui (Proficient)
+  
+  BACKEND & DB: Node.js (Proficient), Express.js (Proficient),
+  MongoDB (Proficient), Supabase (Proficient), REST APIs (Proficient)
+  
+  CLOUD & TOOLS: GCP (Familiar), AWS S3 (Familiar), 
+  Cloudinary (Proficient), Docker (Familiar), 
+  Git & GitHub (Proficient), Figma (Proficient)
+
+- Bottom: "Also exploring" tag cloud — Kubernetes, GraphQL, 
+  System Design, LLM APIs, DSA & CP
+
+── 5. EXPERIENCE ─────────────────────────────────────────────────────────
+- Heading: "My Journey"
+- Vertical timeline layout with a glowing animated line running down center
+- Each item animates in from alternating left/right on scroll
+- Timeline nodes: glowing circle with company initial
+
+Items (newest first):
+
+  [1] Lead Organizer — Google Developers Group (GDG) KARE
+      Aug 2025 – Present | Andhra Pradesh
+      → Selected by Google through a competitive process
+      → Leading a chapter of 1,300+ active members
+      → Managing 13 core team members
+      → Organizing tech events, workshops & collaborating with industry experts
+      → Mentoring students and overseeing software product development
+      Badge: "Google" (blue)
+
+  [2] Web Developer — Google Developers Group (GDG) KARE
+      Feb 2025 – Present
+      → Led workshops and mentorship programs impacting 500+ students
+      → Built a feedback-driven web application for event evaluations
+      → Helped identify high-demand topics improving student engagement
+      Badge: "GDG" (green)
+
+  [3] Web Developer Intern — Zidio Development
+      Jun 2025 – Aug 2025
+      → Built data visualization platform for Excel file analysis
+      → Implemented 2D/3D interactive charts using Three.js, Plotly, Chart.js
+      → Integrated AI chatbot to recommend best-fit graphs for non-technical users
+      Badge: "Internship" (violet)
+
+  [4] B.Tech CSE (AIML) — KARE
+      Aug 2023 – Present
+      → CGPA: 9.18 / 10
+      → Specialization in Artificial Intelligence & Machine Learning
+      Badge: "Education" (amber)
+
+── 6. PROJECTS ───────────────────────────────────────────────────────────
+- Heading: "Things I've Built"
+- Filter tabs: All | AI/ML | Full Stack | Tools
+- 3-column responsive grid (1 col mobile, 2 tablet, 3 desktop)
+- Each card:
+  - Gradient top banner (unique per project, use abstract CSS gradients)
+  - Project title + description
+  - Tech stack tags
+  - Links: Live Demo button + GitHub icon button
+  - Hover: card lifts with scale(1.03) + glow border effect
+
+Projects:
+
+  [1] 🤖 AI Powered Mock Interview
+  Tag: AI/ML | Full Stack
+  Gradient: blue → violet
+  Desc: "A placement preparation platform simulating real recruitment 
+  workflows — aptitude tests, technical & HR interview rounds, 
+  AI-powered video analyzer for vocal and visual delivery evaluation, 
+  and a resume analyzer with actionable improvement insights."
+  Stack: Next.js, Node.js, AI/LLM, Video Analysis API, Resume Parser
+  Featured: true (show larger / highlighted)
+
+  [2] 🗺️ TechNav
+  Tag: AI/ML | Full Stack
+  Gradient: teal → blue
+  Desc: "An AI-powered personalised learning platform that analyses 
+  user knowledge to generate structured roadmaps with curated 
+  resources, concept-based quizzes, and a progress analytics 
+  dashboard — built using RAG architecture."
+  Stack: Next.js, React.js, Node.js, Supabase, RAG, PostgreSQL
+
+  [3] 🏟️ HackArena
+  Tag: Full Stack | Tools
+  Gradient: violet → pink
+  Desc: "A hackathon management platform with role-based panels for 
+  Participants, Organizers, and Judges. Features team formation via 
+  invite links, round-wise submissions, quiz evaluation, rubric-based 
+  judging, and controlled leaderboard release."
+  Stack: Next.js, Supabase, PostgreSQL, TailwindCSS, Auth
+
+- "More on GitHub" CTA button at the bottom
+
+── 7. ACHIEVEMENTS & COMMUNITY ──────────────────────────────────────────
+- Horizontal scroll card strip (overflow-x auto, snap scroll)
+- Each card: icon + title + description
+
+Cards:
+  🏆 GDG Lead Organizer — Selected by Google, leading 1,300+ developers
+  🎓 CGPA 9.18 — Top academic performer in CSE (AIML)
+  👥 500+ Students Mentored — Through GDG workshops and events
+  🤝 13-Member Core Team — Managed and coordinated GDG core operations
+  💻 3 AI-Powered Projects — Built and deployed at scale
+  🌐 Google Developer — Official Google Developers Group leader
+
+── 8. CONTACT ────────────────────────────────────────────────────────────
+- Dark section with gradient background blur orbs
+- Heading: "Let's Build Something Together"
+- Sub: "I'm currently open to full-time roles, internships, 
+  freelance projects, and exciting collaborations."
+
+- Left side: contact info cards
+  → 📧 aradhulakarthik@gmail.com
+  → 📱 +91 6302559912
+  → 📍 Andhra Pradesh, India
+  → 🟢 Status: Open to Work
+
+- Right side: contact form
+  → Name input
+  → Email input
+  → Subject input
+  → Message textarea
+  → "Send Message" button with loading spinner + success state animation
+  (use EmailJS or just make it functional UI)
+
+- Social links: GitHub, LinkedIn — large icon buttons with hover lift
+
+── 9. FOOTER ─────────────────────────────────────────────────────────────
+- Minimal: "Designed & Built by Karthik Raju" 
+- Year: 2025
+- Back to top button (smooth scroll, animated arrow)
+- Nav links repeated small
+
+==========================================================================
+GLOBAL ANIMATION RULES (FRAMER MOTION)
+==========================================================================
+- Page load: staggered fade-in from bottom (y: 40 → 0, opacity 0 → 1)
+- Section entry: use whileInView with once: true, viewport margin "-100px"
+- Hover states: subtle scale + border glow on all interactive elements
+- Stagger children: 0.1s delay between each child element
+- Spring physics: stiffness 100, damping 15 for all transforms
+- Page transitions: fade between route changes
+- Reduced motion: respect prefers-reduced-motion media query
+
+==========================================================================
+PERFORMANCE & EXTRAS
+==========================================================================
+- Mobile fully responsive (breakpoints: sm 640, md 768, lg 1024, xl 1280)
+- SEO: proper meta tags, og:image, title = "Karthik Raju | Full Stack Developer"
+- Favicon: "KR" text favicon
+- Loading screen: animated "KR." that morphs out after 1.5s
+- 404 page: fun animated "lost in space" illustration
+- Add subtle sound effects on button hover (optional toggle)
+- All images lazy loaded
+- Lighthouse score target: 90+ performance
+
+==========================================================================
+FILE STRUCTURE
+==========================================================================
+/app
+  layout.tsx
+  page.tsx (imports all sections)
+  /components
+    Navbar.tsx
+    Hero.tsx
+    About.tsx
+    Skills.tsx
+    Experience.tsx
+    Projects.tsx
+    Achievements.tsx
+    Contact.tsx
+    Footer.tsx
+    CustomCursor.tsx
+    ParticleCanvas.tsx
+    SmoothScroll.tsx
+  /lib
+    data.ts  ← all content/data centralized here
+  /public
+    resume.pdf
+
+==========================================================================
+IMPORTANT NOTES
+==========================================================================
+- Keep ALL text content exactly as specified above — real name, real email,
+  real descriptions, real project details
+- Every section must have a unique subtle background treatment so 
+  sections feel distinct while staying cohesive
+- No stock photos — use CSS/SVG illustrations and gradient avatars
+- The portfolio must feel ALIVE — nothing should be static
+- Code quality: clean, commented, component-based, no inline styles
+- Deploy-ready on Vercel with no errors
