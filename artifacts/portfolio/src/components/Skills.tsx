@@ -50,16 +50,16 @@ export default function Skills() {
   const [activeTab, setActiveTab] = useState<SkillTab>("Frontend");
 
   return (
-    <section id="skills" className="py-28 relative bg-card/30">
+    <section id="skills" className="py-16 md:py-28 relative bg-card/30">
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 50% 40% at 20% 60%, rgba(167,139,250,0.04) 0%, transparent 70%)" }} />
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-10 md:mb-14"
         >
           <p className="text-sm font-mono mb-3 text-primary" style={{ fontFamily: "'Fira Code', monospace" }}>const skills =</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
             {"{ "}
             <span style={{ background: "linear-gradient(135deg, #58a6ff, #a78bfa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Skills
@@ -68,13 +68,14 @@ export default function Skills() {
           </h2>
         </motion.div>
 
-        <div className="flex justify-center mb-10">
-          <div className="relative flex p-1 rounded-xl bg-card border border-border">
+        {/* Tabs — scrollable on small screens */}
+        <div className="flex justify-center mb-8 md:mb-10">
+          <div className="relative flex p-1 rounded-xl bg-card border border-border overflow-x-auto max-w-full scrollbar-hide">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className="relative px-5 py-2 text-sm font-medium rounded-lg transition-colors duration-200 z-10 cursor-pointer"
+                className="relative px-3 sm:px-5 py-2 text-xs sm:text-sm font-medium rounded-lg transition-colors duration-200 z-10 cursor-pointer whitespace-nowrap shrink-0"
                 style={{ color: activeTab === tab ? "hsl(var(--primary-foreground))" : "hsl(var(--muted-foreground))" }}
                 data-testid={`button-tab-${tab.toLowerCase().replace(/\s+/g, "-")}`}
               >
@@ -96,7 +97,7 @@ export default function Skills() {
             key={activeTab}
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
           >
             {skillsData[activeTab].map((skill, i) => (
               <motion.div
@@ -104,17 +105,17 @@ export default function Skills() {
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.06, duration: 0.4 }}
                 whileHover={{ y: -4, boxShadow: "0 8px 24px rgba(88,166,255,0.1)" }}
-                className="p-5 rounded-2xl border border-border bg-card transition-all duration-200"
+                className="p-4 md:p-5 rounded-2xl border border-border bg-card transition-all duration-200"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 flex items-center justify-center">
+                <div className="flex items-center justify-between mb-3 md:mb-4">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-7 h-7 md:w-8 md:h-8 flex items-center justify-center shrink-0">
                       {iconMap[skill.icon] ?? <span className="text-xl">{skill.icon}</span>}
                     </div>
                     <span className="font-semibold text-sm text-foreground">{skill.name}</span>
                   </div>
                   <span
-                    className="text-xs px-2 py-0.5 rounded-full"
+                    className="text-xs px-2 py-0.5 rounded-full shrink-0"
                     style={{
                       color: skill.proficiency === "Proficient" ? "#58a6ff" : skill.proficiency === "Familiar" ? "#a78bfa" : "#ffa657",
                       backgroundColor: skill.proficiency === "Proficient" ? "rgba(88,166,255,0.1)" : skill.proficiency === "Familiar" ? "rgba(167,139,250,0.1)" : "rgba(255,166,87,0.1)",
@@ -135,12 +136,12 @@ export default function Skills() {
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 text-center"
+          className="mt-10 md:mt-12 text-center"
         >
           <p className="text-sm mb-4 text-muted-foreground">Also exploring</p>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3">
             {exploringTags.map((tag) => (
-              <span key={tag} className="px-4 py-2 rounded-full text-sm border text-accent" style={{ borderColor: "rgba(167,139,250,0.3)", backgroundColor: "rgba(167,139,250,0.06)" }}>
+              <span key={tag} className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm border text-accent" style={{ borderColor: "rgba(167,139,250,0.3)", backgroundColor: "rgba(167,139,250,0.06)" }}>
                 {tag}
               </span>
             ))}

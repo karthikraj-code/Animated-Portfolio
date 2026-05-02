@@ -43,36 +43,36 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 relative overflow-hidden bg-card/30">
+    <section id="contact" className="py-16 md:py-28 relative overflow-hidden bg-card/30">
       <div className="absolute -top-32 -left-32 w-64 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(88,166,255,0.1) 0%, transparent 70%)", filter: "blur(40px)" }} />
       <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(167,139,250,0.1) 0%, transparent 70%)", filter: "blur(50px)" }} />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-10 md:mb-14"
         >
           <p className="text-sm font-mono mb-3 text-primary" style={{ fontFamily: "'Fira Code', monospace" }}>
             reach_out()
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 text-foreground">
             Let's Build Something Together
           </h2>
-          <p className="max-w-xl mx-auto text-muted-foreground">
+          <p className="max-w-xl mx-auto text-sm md:text-base text-muted-foreground">
             I'm currently open to full-time roles, internships, freelance projects, and exciting collaborations.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
-            className="space-y-4"
+            className="space-y-3 md:space-y-4"
           >
             {contactItems.map((item, i) => {
               const Icon = item.icon;
@@ -80,9 +80,9 @@ export default function Contact() {
                 <motion.div
                   key={i}
                   whileHover={{ x: 4 }}
-                  className="flex items-center gap-4 p-4 rounded-2xl border border-border bg-card"
+                  className="flex items-center gap-4 p-3 md:p-4 rounded-2xl border border-border bg-card"
                 >
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(88,166,255,0.1)" }}>
+                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(88,166,255,0.1)" }}>
                     {item.isStatus ? (
                       <motion.div
                         className="w-3 h-3 rounded-full"
@@ -91,11 +91,11 @@ export default function Contact() {
                         transition={{ duration: 1.5, repeat: Infinity }}
                       />
                     ) : (
-                      <Icon size={16} className="text-primary" />
+                      <Icon size={15} className="text-primary" />
                     )}
                   </div>
                   {item.href ? (
-                    <a href={item.href} className="text-sm hover:opacity-80 transition-opacity" style={{ color: item.isStatus ? "#22c55e" : undefined }} >
+                    <a href={item.href} className="text-sm hover:opacity-80 transition-opacity break-all" style={{ color: item.isStatus ? "#22c55e" : undefined }}>
                       <span className={item.isStatus ? "" : "text-foreground"}>{item.label}</span>
                     </a>
                   ) : (
@@ -107,16 +107,16 @@ export default function Contact() {
               );
             })}
 
-            <div className="flex gap-4 pt-4">
+            <div className="flex gap-3 pt-2 md:pt-4">
               <motion.a
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.08, y: -3 }}
-                className="flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-card text-foreground font-medium text-sm cursor-pointer hover:border-primary/50 transition-colors"
+                className="flex items-center gap-2 px-4 md:px-5 py-2.5 md:py-3 rounded-xl border border-border bg-card text-foreground font-medium text-sm cursor-pointer hover:border-primary/50 transition-colors"
                 data-testid="link-contact-github"
               >
-                <SiGithub size={18} />
+                <SiGithub size={17} />
                 GitHub
               </motion.a>
               <motion.a
@@ -124,10 +124,10 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.08, y: -3 }}
-                className="flex items-center gap-2 px-5 py-3 rounded-xl border border-border bg-card text-foreground font-medium text-sm cursor-pointer hover:border-primary/50 transition-colors"
+                className="flex items-center gap-2 px-4 md:px-5 py-2.5 md:py-3 rounded-xl border border-border bg-card text-foreground font-medium text-sm cursor-pointer hover:border-primary/50 transition-colors"
                 data-testid="link-contact-linkedin"
               >
-                <FaLinkedin size={18} />
+                <FaLinkedin size={17} />
                 LinkedIn
               </motion.a>
             </div>
@@ -139,12 +139,12 @@ export default function Contact() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="p-8 rounded-2xl border border-border bg-card">
+            <div className="p-5 md:p-8 rounded-2xl border border-border bg-card">
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="flex flex-col items-center justify-center py-12 gap-4"
+                  className="flex flex-col items-center justify-center py-10 md:py-12 gap-4"
                 >
                   <motion.div
                     initial={{ scale: 0 }}
@@ -158,14 +158,15 @@ export default function Contact() {
                 </motion.div>
               ) : (
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-                    <div className="grid grid-cols-2 gap-4">
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:space-y-5">
+                    {/* Name + Email: stacked on mobile, side-by-side on sm+ */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                       <FormField
                         control={form.control}
                         name="name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-muted-foreground">Name</FormLabel>
+                            <FormLabel className="text-muted-foreground text-xs md:text-sm">Name</FormLabel>
                             <FormControl>
                               <Input
                                 placeholder="Your name"
@@ -183,7 +184,7 @@ export default function Contact() {
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-muted-foreground">Email</FormLabel>
+                            <FormLabel className="text-muted-foreground text-xs md:text-sm">Email</FormLabel>
                             <FormControl>
                               <Input
                                 placeholder="your@email.com"
@@ -204,7 +205,7 @@ export default function Contact() {
                       name="subject"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-muted-foreground">Subject</FormLabel>
+                          <FormLabel className="text-muted-foreground text-xs md:text-sm">Subject</FormLabel>
                           <FormControl>
                             <Input
                               placeholder="What's this about?"
@@ -223,11 +224,11 @@ export default function Contact() {
                       name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-muted-foreground">Message</FormLabel>
+                          <FormLabel className="text-muted-foreground text-xs md:text-sm">Message</FormLabel>
                           <FormControl>
                             <Textarea
                               placeholder="Tell me about your project or opportunity..."
-                              rows={5}
+                              rows={4}
                               {...field}
                               className="rounded-xl resize-none bg-background border-border text-foreground"
                               data-testid="textarea-message"

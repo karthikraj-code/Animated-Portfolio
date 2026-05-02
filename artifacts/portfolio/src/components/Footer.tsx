@@ -10,17 +10,17 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative py-10 px-6 border-t border-border bg-background">
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="text-center md:text-left">
-          <p className="text-sm text-muted-foreground">
+    <footer className="relative py-8 md:py-10 px-4 sm:px-6 border-t border-border bg-background">
+      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+        <div className="text-center sm:text-left">
+          <p className="text-xs md:text-sm text-muted-foreground">
             Designed & Built by{" "}
             <span className="font-semibold text-primary">Karthik Raju</span>{" "}
             · 2025
           </p>
         </div>
 
-        <div className="flex items-center gap-6 flex-wrap justify-center">
+        <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
           {navLinks.map(({ label, href }) => (
             <button
               key={href}
@@ -36,10 +36,10 @@ export default function Footer() {
           onClick={scrollToTop}
           whileHover={{ scale: 1.1, y: -2 }}
           whileTap={{ scale: 0.95 }}
-          className="p-3 rounded-full border border-border text-primary cursor-pointer hover:border-primary/50 transition-colors"
+          className="p-2.5 md:p-3 rounded-full border border-border text-primary cursor-pointer hover:border-primary/50 transition-colors"
           data-testid="button-back-to-top"
         >
-          <ArrowUp size={18} />
+          <ArrowUp size={16} />
         </motion.button>
       </div>
     </footer>

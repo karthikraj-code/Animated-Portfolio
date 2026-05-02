@@ -1,12 +1,21 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+function isTouchDevice() {
+  return window.matchMedia("(pointer: coarse)").matches;
+}
 
 export default function CustomCursor() {
   const outerRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
   const pos = useRef({ x: 0, y: 0 });
   const outerPos = useRef({ x: 0, y: 0 });
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // Don't show custom cursor on touch devices
+    if (isTouchDevice()) return;
+    setVisible(true);
+
     const move = (e: MouseEvent) => {
       pos.current = { x: e.clientX, y: e.clientY };
       if (innerRef.current) {
@@ -69,27 +78,19 @@ export default function CustomCursor() {
     };
   }, []);
 
+  if (!visible) return null;
+
   return (
     <>
       <div
         ref={outerRef}
         className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full border-2 transition-all duration-200"
-        style={{
-          width: 40,
-          height: 40,
-          borderColor: "#58a6ff",
-          willChange: "transform",
-        }}
+        style={{ width: 40, height: 40, borderColor: "#58a6ff", willChange: "transform" }}
       />
       <div
         ref={innerRef}
         className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full transition-opacity duration-200"
-        style={{
-          width: 8,
-          height: 8,
-          backgroundColor: "#58a6ff",
-          willChange: "transform",
-        }}
+        style={{ width: 8, height: 8, backgroundColor: "#58a6ff", willChange: "transform" }}
       />
     </>
   );
