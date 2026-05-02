@@ -16,7 +16,7 @@ export default function Footer() {
           <p className="text-xs md:text-sm text-muted-foreground">
             Designed & Built by{" "}
             <span className="font-semibold text-primary">Karthik Raju</span>{" "}
-            · 2025
+            · 2026
           </p>
         </div>
 
