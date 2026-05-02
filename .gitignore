@@ -47,3 +47,37 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Lock files (keep only pnpm-lock.yaml)
+# yarn.lock
+# package-lock.json
+
+# Build outputs
+build/
+dist/
+.next/
+out/
+.turbo/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Mac files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Editor files
+*.sublime-project
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json

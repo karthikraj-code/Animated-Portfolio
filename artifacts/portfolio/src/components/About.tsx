@@ -46,10 +46,10 @@ export default function About() {
           <motion.div variants={fadeUp} className="relative">
             <div
               className="relative w-36 h-36 md:w-48 md:h-48 rounded-full flex items-center justify-center"
-              style={{ background: "conic-gradient(from 0deg, #58a6ff, #a78bfa, #58a6ff)", padding: "3px", animation: "spin 4s linear infinite" }}
+              style={{ background: "conic-gradient(from 0deg, #58a6ff, #a78bfa, #58a6ff)", padding: "3px" }}
             >
-              <div className="w-full h-full rounded-full flex items-center justify-center bg-card">
-                <span className="text-3xl md:text-4xl font-black text-primary" style={{ fontFamily: "'Inter', sans-serif" }}>KR</span>
+              <div className="w-full h-full rounded-full flex items-center justify-center bg-card overflow-hidden">
+                <img src="/profile.jpg" alt="Profile" className="w-full h-full object-cover rounded-full" />
               </div>
             </div>
           </motion.div>

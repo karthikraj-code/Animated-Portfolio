@@ -16,8 +16,8 @@ export const typingTexts = [
 ];
 
 export const socialLinks = {
-  github: "https://github.com/",
-  linkedin: "https://linkedin.com/in/",
+  github: "https://github.com/karthikraj-code",
+  linkedin: "https://linkedin.com/in/karthik-raju-arajyula-55285b28a/",
   email: "aradhulakarthik@gmail.com",
 };
 
@@ -147,7 +147,7 @@ export const projectsData = [
       "A placement preparation platform simulating real recruitment workflows — aptitude tests, technical & HR interview rounds, AI-powered video analyzer for vocal and visual delivery evaluation, and a resume analyzer with actionable improvement insights.",
     stack: ["Next.js", "Node.js", "AI/LLM", "Video Analysis API", "Resume Parser"],
     github: "#",
-    demo: "#",
+    demo: "https://placement-prep-mock.vercel.app/",
     featured: true,
   },
   {
@@ -159,7 +159,7 @@ export const projectsData = [
       "An AI-powered personalised learning platform that analyses user knowledge to generate structured roadmaps with curated resources, concept-based quizzes, and a progress analytics dashboard — built using RAG architecture.",
     stack: ["Next.js", "React.js", "Node.js", "Supabase", "RAG", "PostgreSQL"],
     github: "#",
-    demo: "#",
+    demo: "https://tech-navigation.vercel.app/",
     featured: false,
   },
   {
@@ -171,7 +171,7 @@ export const projectsData = [
       "A hackathon management platform with role-based panels for Participants, Organizers, and Judges. Features team formation via invite links, round-wise submissions, quiz evaluation, rubric-based judging, and controlled leaderboard release.",
     stack: ["Next.js", "Supabase", "PostgreSQL", "TailwindCSS", "Auth"],
     github: "#",
-    demo: "#",
+    demo: "https://gdg-ai-olympics-euphoria.vercel.app/",
     featured: false,
   },
 ];

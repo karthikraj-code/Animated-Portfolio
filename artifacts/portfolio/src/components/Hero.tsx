@@ -7,13 +7,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import ParticleCanvas from "./ParticleCanvas";
 import { typingTexts, socialLinks, codeSnippet } from "@/lib/data";
 
-const floatingBadges = [
-  { label: "React.js ⚛", style: { top: "-16px", right: "8px" } },
-  { label: "Next.js ▲", style: { top: "-16px", left: "8px" } },
-  { label: "Node.js", style: { bottom: "-16px", right: "16px" } },
-  { label: "Framer Motion ✦", style: { bottom: "-16px", left: "8px" } },
-];
-
 function CodeBlock() {
   const [displayed, setDisplayed] = useState("");
   const idx = useRef(0);
@@ -69,19 +62,6 @@ function CodeBlock() {
           className="text-primary"
         >▋</motion.span>
       </div>
-
-      {/* Floating badges — only on md+ to avoid overflow */}
-      {floatingBadges.map((badge, i) => (
-        <motion.div
-          key={badge.label}
-          className="hidden lg:block absolute px-2.5 py-1 rounded-lg border border-border bg-card/95 text-xs font-medium whitespace-nowrap text-muted-foreground"
-          style={{ ...badge.style, fontFamily: "'Fira Code', monospace", backdropFilter: "blur(8px)" }}
-          animate={{ y: [0, -6, 0] }}
-          transition={{ duration: 2.5 + i * 0.4, repeat: Infinity, ease: "easeInOut", delay: i * 0.6 }}
-        >
-          {badge.label}
-        </motion.div>
-      ))}
     </motion.div>
   );
 }
@@ -175,8 +155,8 @@ export default function Hero() {
               View My Work
             </motion.button>
             <motion.a
-              href="#"
-              download
+              href="/resume.pdf"
+              download="Karthik_Raju_Resume.pdf"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm cursor-pointer border border-border text-foreground"

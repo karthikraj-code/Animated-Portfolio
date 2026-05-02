@@ -139,7 +139,7 @@ export default function Projects() {
           className="text-center mt-10 md:mt-12"
         >
           <motion.a
-            href="https://github.com/"
+            href="https://github.com/karthikraj-code"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.04, boxShadow: "0 0 20px rgba(88,166,255,0.2)" }}
