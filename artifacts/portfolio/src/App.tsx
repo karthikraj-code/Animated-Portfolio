@@ -6,7 +6,6 @@ import { ThemeProvider } from "next-themes";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/not-found";
 import LoadingScreen from "@/components/LoadingScreen";
-import CustomCursor from "@/components/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -31,7 +30,6 @@ function App() {
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          <CustomCursor />
           <LoadingScreen isVisible={loading} />
           <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
             <Router />
