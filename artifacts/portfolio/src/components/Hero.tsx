@@ -39,10 +39,10 @@ function CodeBlock() {
   };
 
   return (
-    <motion.div
+      <motion.div
       initial={{ opacity: 0, x: 40 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.8, delay: 0.6 }}
       className="relative rounded-xl overflow-hidden border border-border bg-card"
     >
       <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-background/50">
@@ -110,7 +110,7 @@ export default function Hero() {
   };
   const item = {
     hidden: { opacity: 0, y: 40 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
   return (
@@ -227,7 +227,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.4 }}
           className="relative lg:mt-0 mt-2 w-full"
         >
           <CodeBlock />
@@ -237,7 +237,7 @@ export default function Hero() {
       <motion.div
         className="absolute bottom-6 left-1/2 -translate-x-1/2 cursor-pointer"
         animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 1.5, repeat: Infinity }}
         onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })}
         data-testid="button-scroll-down"
       >
